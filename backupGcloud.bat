@@ -19,5 +19,5 @@ powershell Compress-Archive '.\%timeStamp%'  -Destinationpath '.\%timeStamp%'
 rmdir /s /q %timeStamp%
 
 set fileName="%timeStamp%.zip"
-curl curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"{{messageToPost}}\"}" {{discordURL}}
+curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"{{messageToPost}}\"}" {{discordURL}}
 gsutil cp %fileName% gs://{{bucketLocation}} && curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"content\": \"{{messageToPost}}\"}" {{discordURL}}
